@@ -3,42 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* html,
-body {
-  height: 100%;
-  overflow-x: hidden;
-} */
-/* .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
-  width: 100%;
-  padding: 16px 0;
-
-  background: rgb(164 176 203 / 90%);
-  backdrop-filter: blur(12px);
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-} */
-
-/* .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-
-  width: 100%;
-  padding: 16px 0;
-
-  background: rgb(164 176 203 / 90%);
-  backdrop-filter: blur(12px);
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-} */
 
 .navbar {
   position: sticky;
@@ -48,7 +12,7 @@ body {
   width: 100%;
   padding: 16px 0;
 
-  background: rgb(164 176 203 / 90%);
+  background: rgb(164 176 203 / 100%);
   backdrop-filter: blur(12px);
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);

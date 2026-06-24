@@ -23,7 +23,7 @@ const Notes = ({ showAlert, searchTerm }) => {
       navigate("/login");
     }
     // eslint-disable-next-line
-  }, []);
+  }, [navigate]);
 
   const [note, setNote] = useState({
     id: "",

@@ -1,7 +1,7 @@
 import noteContext from "./noteContext";
 import { useState } from "react";
 const NoteState = (props) => {
-  const host = "http://localhost:5000";
+  const host = process.env.REACT_APP_API_URL;
   const noteInitial = [];
 
   const [notes, setNotes] = useState(noteInitial);
@@ -16,7 +16,12 @@ const NoteState = (props) => {
       },
     });
     const json = await response.json();
-    setNotes(json);
+    // setNotes(json);
+    if (Array.isArray(json)) {
+      setNotes(json);
+    } else {
+      setNotes([]);
+    }
   };
   //Add a note
   const addNote = async (title, description, tag) => {
@@ -43,7 +48,7 @@ const NoteState = (props) => {
         "auth-token": localStorage.getItem("token"),
       },
     });
-    const json = response.json();
+    const json = await response.json();
     console.log(json);
     //filter takes a arrow function
     const newNotes = notes.filter((note) => {

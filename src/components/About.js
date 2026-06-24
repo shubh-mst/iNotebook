@@ -9,7 +9,7 @@ const About = () => {
     if (!localStorage.getItem("token")) {
       navigate("/login");
     }
-  }, []);
+  }, [navigate]);
   return (
     <div className="about-page">
       {/* Hero Section */}

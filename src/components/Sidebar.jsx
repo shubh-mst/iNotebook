@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import "./Sidebar.css";
+const host = process.env.REACT_APP_API_URL;
+console.log("HOST =", host);
 
 function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -9,7 +11,7 @@ function Sidebar() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/auth/getuser", {
+        const response = await fetch(`${host}/api/auth/getuser`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -8,9 +8,13 @@ const Archive = ({ showAlert, searchTerm }) => {
 
   const { notes, deleteNote, pinNote, archiveNote, editNote } = context;
 
-  const archivedNotes = notes
-    .filter((note) => note.archived)
-    .sort((a, b) => b.pinned - a.pinned);
+  // const archivedNotes = notes
+  //   .filter((note) => note.archived)
+  //   .sort((a, b) => b.pinned - a.pinned);
+
+  const archivedNotes = Array.isArray(notes)
+    ? notes.filter((note) => note.archived).sort((a, b) => b.pinned - a.pinned)
+    : [];
 
   const filteredArchivedNotes = archivedNotes.filter((note) =>
     note.title.toLowerCase().includes((searchTerm || "").toLowerCase()),
@@ -55,7 +59,7 @@ const Archive = ({ showAlert, searchTerm }) => {
     if (!localStorage.getItem("token")) {
       navigate("/login");
     }
-  }, []);
+  }, [navigate]);
   return (
     <div className="archive-page">
       <div className="archive-header">

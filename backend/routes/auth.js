@@ -7,12 +7,14 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 var fetchuser = require("../middleware/fetchuser");
-const jwt_secret = "shubhisagoodbo$y";
+// const jwt_secret = "shubhisagoodbo$y";
+const jwt_secret = process.env.JWT_SECRET;
+
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "shubhgupta0737@gmail.com",
-    pass: "ckxugigifwzbrijf",
+    user: process.env.EMAIL,
+    pass: process.env.APP_PASSWORD,
   },
 });
 
@@ -44,7 +46,7 @@ router.post(
           .json({ error: "Sorry a user with this email already exists" });
       }
       const salt = await bcrypt.genSalt(10);
-      secPass = await bcrypt.hash(req.body.password, salt);
+      const secPass = await bcrypt.hash(req.body.password, salt);
       // create a new user
       user = await User.create({
         name: req.body.name,
@@ -52,7 +54,7 @@ router.post(
         email: req.body.email,
       });
       await transporter.sendMail({
-        from: "shubhgupta0737@gmail.com",
+        from: process.env.EMAIL,
         to: user.email,
         subject: "Welcome to iNotebook 🎉",
         html: `
@@ -126,7 +128,7 @@ router.post(
 //Route 3. Get Loggedin user details using : POST "/api/auth/getuser". Login required
 router.post("/getuser", fetchuser, async (req, res) => {
   try {
-    userId = req.user.id;
+    const userId = req.user.id;
     const user = await User.findById(userId).select("-password");
     res.send(user);
   } catch (error) {
