@@ -53,17 +53,18 @@ router.post(
         password: secPass,
         email: req.body.email,
       });
-      await transporter.sendMail({
-        from: process.env.EMAIL,
-        to: user.email,
-        subject: "Welcome to iNotebook 🎉",
-        html: `
-    <h2>Welcome to iNotebook!</h2>
-    <p>Hello <b>${user.name}</b>,</p>
-    <p>Your account has been created successfully.</p>
-    <p>Thanks for joining us! 😊</p>
-  `,
-      });
+      //     await transporter.sendMail({
+      //       from: process.env.EMAIL,
+      //       to: user.email,
+      //       subject: "Welcome to iNotebook 🎉",
+      //       html: `
+      //   <h2>Welcome to iNotebook!</h2>
+      //   <p>Hello <b>${user.name}</b>,</p>
+      //   <p>Your account has been created successfully.</p>
+      //   <p>Thanks for joining us! 😊</p>
+      // `,
+
+      // });
       const data = {
         user: {
           id: user.id,
