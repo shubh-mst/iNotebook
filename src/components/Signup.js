@@ -6,7 +6,7 @@ const Signup = (props) => {
     name: "",
     email: "",
     password: "",
-    cpasssword: "",
+    cpassword: "",
   });
   let navigate = useNavigate();
   const handleSubmit = async (e) => {
